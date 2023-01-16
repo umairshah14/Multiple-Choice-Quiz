@@ -1,0 +1,13 @@
+- CREATE A START BUTTON
+    - This has an event listener on it
+    - on click the timer will start counting up
+    - on click, the first question will appear alongside the options
+    - each option is a BUTTON
+    - if the selected option === false, timer goes up by 5 seconds
+
+
+QUESTIONS:
+
+- an object for each question
+- if you reach the end of the array of questions, endgame
+- 
