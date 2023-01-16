@@ -60,21 +60,22 @@ function getQuestion() {
     choiceBtn.setAttribute("value", choice);
     choiceBtn.textContent = i + 1 + ". " + choice;
     document.body.appendChild(choiceBtn);
-
     choiceBtn.addEventListener("click", function () {
       console.log("in event listener");
       if (choiceBtn.value === currentQuestion.answer) {
         question.textContent = questions[quizIndex].questionTitle;
-        document.getElementById("myAudio").play();
+        sfxCorrect.play();
         quizIndex++;
+        currentQuestion.innerHTML = ""
         getQuestion();
       } else {
-        document.getElementById("myincorrectAudio").play();
+        sfxIncorrect.play();
       }
     });
   });
 }
 
+// One tip I can give is to write code that removes the answers from the last question, possibly a condition that checks if the you are on the next question
 function timer() {
   timeAmount--;
   timerEl.textContent = timeAmount;
