@@ -43,6 +43,7 @@ var timerId
 
 // HIGHSCORES
 var highscoresEl = document.querySelector("#highscores");
+var initialsEl = document.querySelector("#initials");
 
 
 var finalScore = 0
@@ -112,13 +113,29 @@ function timer() {
 // Function to check if you've pressed enter and for saving the high score
 
 
-submitEl.addEventListener('click', function(){
-    
-    // append the score to the high score page
-    var highscoresItem = document.createElement("li");
-    highscoresItem.textContent = finalScore;
-    highscoresEl.appendChild(highscoresItem);
+function saveHighscore() {
+    // get value of input box
+    var initials = initialsEl.value.trim();
+  
+    // make sure value wasn't empty
+    if (initials !== "") {
+      // get saved scores from localstorage, or if not any, set to empty array
+      var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+      // format new score object for current user
+      var newScore = {
+        score: finalScore,
+        initials: initials
+      };
+  
+      // save to localstorage
+      highscores.push(newScore);
+      window.localStorage.setItem("highscores", JSON.stringify(highscores));
+  
+      // redirect to next page
+    window.location.href = "highscores.html";
 
-})
+    }
+}
 
+submitEl.onclick = saveHighscore;
 startBtn.onclick = startQuiz;
