@@ -1,21 +1,4 @@
-var startBtn = document.querySelector("#start");
-var timerEl = document.querySelector(".timer");
-var finalScoreEl = document.querySelector("#final-score");
-var questionsEl = document.querySelector("#questions");
-var submitEl = document.querySelector("#submit");
-var initialScoreEl = document.querySelector("#initials");
-var feedbackEl = document.querySelector("#feedback");
-var choicesEl = document.querySelector("#choice");
-var startScreenEl = document.querySelector("#start-screen");
-var quizIndex = 0;
-var timeAmount = 30; //questions.length * 5;
-// var timerID;
-var gameState = false;
-var choicesHolder = document.querySelectorAll("choices");
-
-var sfxCorrect = new Audio("./assets/sfx/correct.wav");
-var sfxIncorrect = new Audio("./assets/sfx/incorrect.wav");
-
+// LOGIC
 var questions = [
   {
     questionTitle: "Fav football team",
@@ -38,14 +21,37 @@ var questions = [
     answer: "Thierry Henry",
   },
 ];
+var startBtn = document.querySelector("#start");
+var timerEl = document.querySelector(".timer");
+var finalScoreEl = document.querySelector("#final-score");
+var questionsEl = document.querySelector("#questions");
+var submitEl = document.querySelector("#submit");
+var initialScoreEl = document.querySelector("#initials");
+var feedbackEl = document.querySelector("#feedback");
+var choicesEl = document.querySelector("#choice");
+var startScreenEl = document.querySelector("#start-screen");
+var endScreenEl = document.querySelector("#end-screen");
 
+var quizIndex = 0;
+var timeAmount = questions.length * 5;
+
+var choicesHolder = document.querySelectorAll("choices");
+
+var sfxCorrect = new Audio("./assets/sfx/correct.wav");
+var sfxIncorrect = new Audio("./assets/sfx/incorrect.wav");
+var timerId 
+
+// HIGHSCORES
+var highscoresEl = document.querySelector("#highscores");
+
+
+var finalScore = 0
 // Function to start quiz
 function startQuiz() {
-  gameState = true;
   startScreenEl.setAttribute("class", "hide");
   questionsEl.removeAttribute("class");
   timerEl.textContent = timeAmount;
-  setInterval(timer, 1000);
+  timerId = setInterval(timer, 1000);
   getQuestion();
 }
 
@@ -55,6 +61,7 @@ function getQuestion() {
   var question = document.querySelector("#question-title");
   var choicesHolder = document.querySelector("#choices");
   question.textContent = currentQuestion.questionTitle;
+  
   currentQuestion.choices.forEach(function (choice, i) {
     var choiceBtn = document.createElement("button");
     choiceBtn.setAttribute("class", "choices");
@@ -62,35 +69,56 @@ function getQuestion() {
     choiceBtn.textContent = i + 1 + ". " + choice;
     choicesHolder.appendChild(choiceBtn);
     choiceBtn.addEventListener("click", function () {
-      console.log("in event listener");
-      if (choiceBtn.value === currentQuestion.answer) {
+
+      if (quizIndex === questions.length - 1 ) {
+        if (choiceBtn.value === currentQuestion.answer) {
+            finalScore ++
+            sfxCorrect.play();
+          }
+          finalScoreEl.textContent = finalScore + "/" + questions.length
+          questionsEl.setAttribute("class", "hide")
+          endScreenEl.setAttribute("class", "visible");
+          console.log(finalScore);
+          clearInterval(timerId)
+        return
+      }
+
+      if (choiceBtn.value === currentQuestion.answer ) {
+        finalScore ++
+        console.log(finalScore);
         question.textContent = questions[quizIndex].questionTitle;
         sfxCorrect.play();
         quizIndex++;
         choicesHolder.innerHTML = "";
         getQuestion();
-
-        if (questions.indexOf(questions[quizIndex]) === questions.length - 1) {
-            console.log("Reached the end of the questions");
-        }
         
-      } else {
+      } else if (choiceBtn.value !== currentQuestion.answer){
+        question.textContent = questions[quizIndex].questionTitle;
+        console.log(finalScore);
         sfxIncorrect.play();
+        quizIndex++;
+        choicesHolder.innerHTML = "";
+        getQuestion();
       }
     });
   });
 }
-
-// One tip I can give is to write code that removes the answers from the last question, possibly a condition that checks if the you are on the next question
 function timer() {
   timeAmount--;
   timerEl.textContent = timeAmount;
 }
 
-// Function to end the quiz
 
-// Function for saving the high score
+// Function to check if you've pressed enter and for saving the high score
 
-// Function to check if you've pressed enter
+
+submitEl.addEventListener('click', function(){
+    
+    // append the score to the high score page
+    var highscoresItem = document.createElement("li");
+    highscoresItem.textContent = finalScore;
+    highscoresEl.appendChild(highscoresItem);
+
+})
 
 startBtn.onclick = startQuiz;
