@@ -11,6 +11,7 @@ var quizIndex = 0;
 var timeAmount = 30; //questions.length * 5;
 // var timerID;
 var gameState = false;
+var choicesHolder = document.querySelectorAll("choices");
 
 var sfxCorrect = new Audio("./assets/sfx/correct.wav");
 var sfxIncorrect = new Audio("./assets/sfx/incorrect.wav");
@@ -52,22 +53,27 @@ function startQuiz() {
 function getQuestion() {
   var currentQuestion = questions[quizIndex];
   var question = document.querySelector("#question-title");
+  var choicesHolder = document.querySelector("#choices");
   question.textContent = currentQuestion.questionTitle;
-
   currentQuestion.choices.forEach(function (choice, i) {
     var choiceBtn = document.createElement("button");
     choiceBtn.setAttribute("class", "choices");
     choiceBtn.setAttribute("value", choice);
     choiceBtn.textContent = i + 1 + ". " + choice;
-    document.body.appendChild(choiceBtn);
+    choicesHolder.appendChild(choiceBtn);
     choiceBtn.addEventListener("click", function () {
       console.log("in event listener");
       if (choiceBtn.value === currentQuestion.answer) {
         question.textContent = questions[quizIndex].questionTitle;
         sfxCorrect.play();
         quizIndex++;
-        currentQuestion.innerHTML = ""
+        choicesHolder.innerHTML = "";
         getQuestion();
+
+        if (questions.indexOf(questions[quizIndex]) === questions.length - 1) {
+            console.log("Reached the end of the questions");
+        }
+        
       } else {
         sfxIncorrect.play();
       }
