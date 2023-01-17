@@ -54,12 +54,14 @@ var endScreenEl = document.querySelector("#end-screen");
 
 var quizIndex = 0;
 var timeAmount = questions.length * 5;
+var ticker = 0
 
 var choicesHolder = document.querySelectorAll("choices");
 
 var sfxCorrect = new Audio("./assets/sfx/correct.wav");
 var sfxIncorrect = new Audio("./assets/sfx/incorrect.wav");
 var timerId 
+var gameState = false
 
 // HIGHSCORES
 var highscoresEl = document.querySelector("#highscores");
@@ -69,6 +71,7 @@ var initialsEl = document.querySelector("#initials");
 var finalScore = 0
 // Function to start quiz
 function startQuiz() {
+  gameState = true
   startScreenEl.setAttribute("class", "hide");
   questionsEl.removeAttribute("class");
   timerEl.textContent = timeAmount;
@@ -100,6 +103,7 @@ function getQuestion() {
           questionsEl.setAttribute("class", "hide")
           endScreenEl.setAttribute("class", "visible");
           console.log(finalScore);
+          gameState = false
           clearInterval(timerId)
         return
       }
@@ -127,8 +131,14 @@ function getQuestion() {
 function timer() {
   timeAmount--;
   timerEl.textContent = timeAmount;
-}
 
+  if (gameState === true && timeAmount === 0) {
+    alert("ran out of time, GAME OVER")
+    clearInterval(timerId)
+    window.location.href = "index.html";
+    return
+  }
+}
 
 // Function to check if you've pressed enter and for saving the high score
 
