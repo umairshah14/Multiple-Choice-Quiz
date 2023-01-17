@@ -1,24 +1,44 @@
 // LOGIC
 var questions = [
   {
-    questionTitle: "Fav football team",
-    choices: ["Arsenal", "Man Utd", "Man City", "Chelsea"],
-    answer: "Arsenal",
+    questionTitle: "Which built-in method returns the length of the string?",
+    choices: ["length()", "size()", "index()", "None of the above"],
+    answer: "length()",
   },
   {
-    questionTitle: "Best color combo",
-    choices: ["Red + White", "Green + Red", "Yellow + Green", "Blue + Blue"],
-    answer: "Red + White",
+    questionTitle: "Which of the following function of Number object formats a number with a specific number of digits to the right of the decimal?",
+    choices: ["toExponential()", "toFixed()", "toPrecision()", "toLocaleString()"],
+    answer: "toFixed()",
   },
   {
-    questionTitle: "Worst football team",
-    choices: ["Arsenal", "Man Utd", "Man City", "Spurs"],
-    answer: "Spurs",
+    questionTitle: "Which of the following function of Boolean object returns a string containing the source of the Boolean object?",
+    choices: ["toSource()", "valueOf()", "toString()", "None of the above"],
+    answer: "toSource()",
   },
   {
-    questionTitle: "Whos an Ex Arsenal Player",
-    choices: ["Thierry Henry", "John Terry", "Alan Shearer"],
-    answer: "Thierry Henry",
+    questionTitle: "Which of the following function of String object splits a String object into an array of strings by separating the string into substrings?",
+    choices: ["slice()", "split()", "replace()", "search()"],
+    answer: "split()",
+  },
+  {
+    questionTitle: "Which of the following function of String object returns the calling string value converted to lower case?",
+    choices: ["toLocaleLowerCase()", "toLowerCase()", "toString()", "substring()"],
+    answer: "toLowerCase()",
+  },
+  {
+    questionTitle: "Which of the following function of String object causes a string to be displayed as a subscript, as if it were in a <sub> tag?",
+    choices: ["sup()", "small()", "strike()", "sub()"],
+    answer: "sub()",
+  },
+  {
+    questionTitle: "Which of the following function of Array object joins all elements of an array into a string?",
+    choices: ["concat()", "join()", "pop()", "map()"],
+    answer: "join()",
+  },  
+  {
+    questionTitle: "Which of the following function of Array object represents the source code of an object?",
+    choices: ["toSource()", "splice()", "toString()", "unshift()"],
+    answer: "toSource()",
   },
 ];
 var startBtn = document.querySelector("#start");
@@ -132,7 +152,7 @@ function saveHighscore() {
       window.localStorage.setItem("highscores", JSON.stringify(highscores));
   
       // redirect to next page
-    window.location.href = "highscores.html";
+            window.location.href = "highscores.html";
 
     }
 }
