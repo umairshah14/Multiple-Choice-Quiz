@@ -15,8 +15,14 @@ To use and try out this project, first clone the repository from GitHub with the
 
 OR
 
-visit the live deployed application at: https://umairshah14.github.io/Password-Generator/
+visit the live deployed application at: https://umairshah14.github.io/Multiple-Choice-Quiz/
 
 ## Credits
 
 Umair Shah
+
+## Resources
+
+- https://www.w3schools.com/jsref/met_win_setinterval.asp
+- https://www.w3schools.com/jsref/prop_html_innerhtml.asp
+- https://www.w3schools.com/jsref/prop_win_localstorage.asp
