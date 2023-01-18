@@ -133,7 +133,7 @@ function timer() {
   timerEl.textContent = timeAmount;
 
   if (gameState === true && timeAmount === 0) {
-    alert("ran out of time, GAME OVER")
+    alert("Ran out of time, GAME OVER")
     clearInterval(timerId)
     window.location.href = "index.html";
     return
