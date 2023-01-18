@@ -79,6 +79,18 @@ function startQuiz() {
   getQuestion();
 }
 
+// function to make timer
+function timer() {
+  timeAmount--;
+  timerEl.textContent = timeAmount;
+  if (gameState === true && timeAmount <= 0) {
+    alert("Ran out of time, GAME OVER")
+    clearInterval(timerId)
+    window.location.href = "index.html";
+    return
+  }
+}
+
 // Function to get the questions
 function getQuestion() {
   var currentQuestion = questions[quizIndex];
@@ -121,6 +133,7 @@ function getQuestion() {
         getQuestion();
         
       } else if (choiceBtn.value !== currentQuestion.answer){
+        timeAmount -= 10
         question.textContent = questions[quizIndex].questionTitle;
         console.log(finalScore);
         sfxIncorrect.play();
@@ -130,18 +143,6 @@ function getQuestion() {
       }
     });
   });
-}
-
-// function to make timer
-function timer() {
-  timeAmount--;
-  timerEl.textContent = timeAmount;
-  if (gameState === true && timeAmount === 0) {
-    alert("Ran out of time, GAME OVER")
-    clearInterval(timerId)
-    window.location.href = "index.html";
-    return
-  }
 }
 
 // Function to check if you've pressed enter and for saving the high score
