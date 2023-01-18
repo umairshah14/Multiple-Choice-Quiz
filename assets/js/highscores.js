@@ -2,6 +2,9 @@ var highscoresEl = document.querySelector("#highscores");
 
 var highscores = JSON.parse(window.localStorage.getItem("highscores"));
 
+var timeElapsedGame = JSON.parse(window.localStorage.getItem("timeItTook"))
+console.log("time it took: " + timeElapsedGame);
+
 //SORT THE SCORES
 function sortHighscores() {
     highscores.sort(function(a, b) {
@@ -14,12 +17,12 @@ for (let i = 0; i < highscores.length; i++) {
 
     if (highscores[i].score === 1 ){
         var highscoresItem = document.createElement("li");
-        highscoresItem.textContent =  highscores[i].initials.toUpperCase().slice(0, 3) + " - "  + highscores[i].score + " Point"
+        highscoresItem.textContent =  highscores[i].initials.toUpperCase().slice(0, 3) + " - "  + highscores[i].score + " Point" + ", completed in " + timeElapsedGame + " seconds"
         highscoresItem.style = "list-style:none" 
         highscoresEl.appendChild(highscoresItem);
     }else {
         var highscoresItem = document.createElement("li");
-        highscoresItem.textContent =  highscores[i].initials.toUpperCase().slice(0, 3) + " - "  + highscores[i].score + " Points"
+        highscoresItem.textContent =  highscores[i].initials.toUpperCase().slice(0, 3) + " - "  + highscores[i].score + " Points" + ", completed in " + timeElapsedGame + " seconds"
         highscoresItem.style = "list-style:none" 
         highscoresEl.appendChild(highscoresItem);
     }   

@@ -54,7 +54,6 @@ var endScreenEl = document.querySelector("#end-screen");
 
 var quizIndex = 0;
 var timeAmount = questions.length * 5;
-var ticker = 0
 
 var choicesHolder = document.querySelectorAll("choices");
 
@@ -66,7 +65,6 @@ var gameState = false
 // HIGHSCORES
 var highscoresEl = document.querySelector("#highscores");
 var initialsEl = document.querySelector("#initials");
-
 
 var finalScore = 0
 // Function to start quiz
@@ -105,6 +103,9 @@ function getQuestion() {
           console.log(finalScore);
           gameState = false
           clearInterval(timerId)
+          var timeElapsed = (questions.length * 5) - timeAmount
+          console.log("Time it took: " + timeElapsed + "seconds");
+          window.localStorage.setItem("timeItTook", JSON.stringify(timeElapsed));
         return
       }
 
@@ -131,8 +132,6 @@ function getQuestion() {
 function timer() {
   timeAmount--;
   timerEl.textContent = timeAmount;
-  ticker ++
-  console.log(ticker);
   if (gameState === true && timeAmount === 0) {
     alert("Ran out of time, GAME OVER")
     clearInterval(timerId)
