@@ -131,7 +131,8 @@ function getQuestion() {
 function timer() {
   timeAmount--;
   timerEl.textContent = timeAmount;
-
+  ticker ++
+  console.log(ticker);
   if (gameState === true && timeAmount === 0) {
     alert("Ran out of time, GAME OVER")
     clearInterval(timerId)

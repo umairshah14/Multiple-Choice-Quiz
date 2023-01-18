@@ -15,12 +15,12 @@ for (let i = 0; i < highscores.length; i++) {
     if (highscores[i].score === 1 ){
         var highscoresItem = document.createElement("li");
         highscoresItem.textContent =  highscores[i].initials.toUpperCase().slice(0, 3) + " - "  + highscores[i].score + " Point"
-        highscoresItem.setAttribute("list-style", "none")
+        highscoresItem.style = "list-style:none" 
         highscoresEl.appendChild(highscoresItem);
     }else {
         var highscoresItem = document.createElement("li");
         highscoresItem.textContent =  highscores[i].initials.toUpperCase().slice(0, 3) + " - "  + highscores[i].score + " Points"
-        highscoresItem.setAttribute("list-style", "none")
+        highscoresItem.style = "list-style:none" 
         highscoresEl.appendChild(highscoresItem);
     }   
     
@@ -33,3 +33,6 @@ document.querySelector("#clear").addEventListener("click", function () {
     highscoresEl.innerHTML = "";
     localStorage.clear();
   });
+
+
+  
