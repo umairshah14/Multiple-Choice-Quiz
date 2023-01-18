@@ -52,6 +52,8 @@ var choicesEl = document.querySelector("#choice");
 var startScreenEl = document.querySelector("#start-screen");
 var endScreenEl = document.querySelector("#end-screen");
 
+var timeElapsed
+
 var quizIndex = 0;
 var timeAmount = questions.length * 5;
 
@@ -103,9 +105,9 @@ function getQuestion() {
           console.log(finalScore);
           gameState = false
           clearInterval(timerId)
-          var timeElapsed = (questions.length * 5) - timeAmount
-          console.log("Time it took: " + timeElapsed + "seconds");
-          window.localStorage.setItem("timeItTook", JSON.stringify(timeElapsed));
+          timeElapsed = (questions.length * 5) - timeAmount
+          console.log("Time it took: " + timeElapsed + " seconds");
+
         return
       }
 
@@ -129,6 +131,8 @@ function getQuestion() {
     });
   });
 }
+
+// function to make timer
 function timer() {
   timeAmount--;
   timerEl.textContent = timeAmount;
@@ -141,8 +145,6 @@ function timer() {
 }
 
 // Function to check if you've pressed enter and for saving the high score
-
-
 function saveHighscore() {
     // get value of input box
     var initials = initialsEl.value.trim();
@@ -154,7 +156,8 @@ function saveHighscore() {
       // format new score object for current user
       var newScore = {
         score: finalScore,
-        initials: initials
+        initials: initials,
+        timeTaken: timeElapsed
       };
   
       // save to localstorage
