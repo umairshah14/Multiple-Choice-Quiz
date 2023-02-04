@@ -7,8 +7,8 @@ This task helped me understand basic front end javascript methods such as innerH
 
 Below are screenshots of what the project should look like when opened in the browser 
 
-![screenshot of the project](./assets/images/Screenshot%202023-02-04%20at%2016.59.05.png)
 ![screenshot of the project](./assets/images/Screenshot%202023-02-04%20at%2016.59.23.png)
+![screenshot of the project](./assets/images/Screenshot%202023-02-04%20at%2016.59.05.png)
 
 ## Usage
 
