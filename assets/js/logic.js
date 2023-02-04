@@ -48,9 +48,11 @@ var questionsEl = document.querySelector("#questions");
 var submitEl = document.querySelector("#submit");
 var initialScoreEl = document.querySelector("#initials");
 var feedbackEl = document.querySelector("#feedback");
+var feedbackAreaEl = document.querySelector(".feedbackArea")
 var choicesEl = document.querySelector("#choice");
 var startScreenEl = document.querySelector("#start-screen");
 var endScreenEl = document.querySelector("#end-screen");
+var submitFeedbackBtnEl = document.querySelector("#submitFeedbackBtn")
 
 
 var quizIndex = 0;
@@ -162,15 +164,20 @@ function saveHighscore() {
       // save to localstorage
       highscores.push(newScore);
       window.localStorage.setItem("highscores", JSON.stringify(highscores));
-  
-      // redirect to next page
-            window.location.href = "highscores.html";
-
+      window.location.href = "highscores.html";
+      
     }
-}
+  }
+  
+//   function submitFeedback (){
+//   window.location.href = "highscores.html";
+// }
 
 submitEl.addEventListener("click", function(){
   saveHighscore()
-
+  // feedbackEl.classList.remove("hide")
+  // feedbackEl.classList.add("feedback")
 })
+
+// submitFeedbackBtnEl.onclick = submitFeedback
 startBtn.onclick = startQuiz;

@@ -79,8 +79,12 @@ li:nth-child {
   font-size: 120%;
   margin-top: 20px;
   padding-top: 10px;
-  color: gray;
+  color: black;
   border-top: 2px solid #ccc;
+}
+
+.feedbackArea {
+  width: 470px;
 }
 
 .timer {
