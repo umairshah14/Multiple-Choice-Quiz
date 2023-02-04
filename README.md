@@ -5,9 +5,10 @@ I created this repository to hold my submission for the week6 challenge which wa
 
 This task helped me understand basic front end javascript methods such as innerHTML, textcontent, localStorage and how to set and get data from it, query selectors and basic DOM manipulation
 
-Below is a gif of what the project should look like when opened in the browser 
+Below are screenshots of what the project should look like when opened in the browser 
 
-![screenshot of the project](./08-web-apis-challenge-demo.gif)
+![screenshot of the project](./assets/images/Screenshot%202023-02-04%20at%2016.59.05.png)
+![screenshot of the project](./assets/images/Screenshot%202023-02-04%20at%2016.59.23.png)
 
 ## Usage
 
