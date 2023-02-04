@@ -52,7 +52,6 @@ var choicesEl = document.querySelector("#choice");
 var startScreenEl = document.querySelector("#start-screen");
 var endScreenEl = document.querySelector("#end-screen");
 
-var timeElapsed
 
 var quizIndex = 0;
 var timeAmount = questions.length * 5;
@@ -85,9 +84,11 @@ function timer() {
   timerEl.textContent = timeAmount;
   if (gameState === true && timeAmount <= 0) {
     alert("Ran out of time, GAME OVER")
+    questionsEl.setAttribute("class", "hide")
+    endScreenEl.setAttribute("class", "visible");
     clearInterval(timerId)
-    window.location.href = "index.html";
-    return
+    finalScoreEl.textContent = finalScore
+    console.log("ROT: " + finalScore);
   }
 }
 
@@ -117,9 +118,7 @@ function getQuestion() {
           console.log(finalScore);
           gameState = false
           clearInterval(timerId)
-          timeElapsed = (questions.length * 5) - timeAmount
-          console.log("Time it took: " + timeElapsed + " seconds");
-
+ 
         return
       }
 
@@ -158,7 +157,6 @@ function saveHighscore() {
       var newScore = {
         score: finalScore,
         initials: initials,
-        timeTaken: timeElapsed
       };
   
       // save to localstorage
@@ -171,5 +169,8 @@ function saveHighscore() {
     }
 }
 
-submitEl.onclick = saveHighscore;
+submitEl.addEventListener("click", function(){
+  saveHighscore()
+
+})
 startBtn.onclick = startQuiz;

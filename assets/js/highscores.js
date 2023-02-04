@@ -16,12 +16,12 @@ for (let i = 0; i < highscores.length; i++) {
 
     if (highscores[i].score === 1 ){
         var highscoresItem = document.createElement("li");
-        highscoresItem.textContent =  highscores[i].initials.toUpperCase().slice(0, 3) + " - "  + highscores[i].score + " Point" + ", completed in " + highscores[i].timeTaken + " seconds"
+        highscoresItem.textContent =  highscores[i].initials.toUpperCase().slice(0, 3) + " - "  + highscores[i].score + " Point"
         highscoresItem.style = "list-style:none" 
         highscoresEl.appendChild(highscoresItem);
     }else {
         var highscoresItem = document.createElement("li");
-        highscoresItem.textContent =  highscores[i].initials.toUpperCase().slice(0, 3) + " - "  + highscores[i].score + " Points" + ", completed in " + highscores[i].timeTaken + " seconds"
+        highscoresItem.textContent =  highscores[i].initials.toUpperCase().slice(0, 3) + " - "  + highscores[i].score + " Points"
         highscoresItem.style = "list-style:none" 
         highscoresEl.appendChild(highscoresItem);
     }   
